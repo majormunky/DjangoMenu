@@ -5,5 +5,18 @@
 </head>
 <body>
     <h1>Home</h1>
+    {% if menu_items %}
+        <ul>
+            {% for menu_item in menu_items %}
+                <li>{{menu_item.name}}</li>
+                {% for submenu_item in menu_item.children.all %}
+                    <li> - {{submenu_item.name}}</li>
+                    {% for submenu2_item in submenu_item.children.all %}
+                        <li> - - {{submenu2_item.name}}</li>
+                    {% endfor %}
+                {% endfor %}
+            {% endfor %}
+        </ul>
+    {% endif %}
 </body>
 </html>
