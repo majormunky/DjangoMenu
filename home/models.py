@@ -7,3 +7,6 @@ class MenuItem(models.Model):
     parent = models.ForeignKey(
         "self", related_name="children", on_delete=models.PROTECT, null=True, blank=True
     )
+
+    def __str__(self):
+        return self.name
